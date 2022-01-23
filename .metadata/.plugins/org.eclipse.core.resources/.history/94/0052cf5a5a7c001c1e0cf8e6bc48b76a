@@ -1,0 +1,20 @@
+import se.lth.cs.pt.window.SimpleWindow;
+
+public class LineDrawing {
+	public static void main(String[] args) {
+		int width = 1080, height = 720;
+		SimpleWindow w = new SimpleWindow(width, height, "LineDrawing");
+
+		while (true) {
+			// vänta tills användaren klickar på en musknapp
+			// rita en linje till den punkt där användaren klickade
+			w.waitForEvent();
+			t = w.getEventType();
+			if (t == MOUSE_EVENT) {
+				System.out.println("mouse detected");
+			}
+
+			
+		}
+	}
+}
