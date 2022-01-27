@@ -12,6 +12,9 @@ public class Calculator {
 		System.out.println("Produkten av talen är " + (nbr1 * nbr2));
 		System.out.println("Kvoten mellan talen är " + (nbr1/nbr2) + "\n");
 		
+		String num = "123";
+		int n = Integer.parseInt(num);
+		System.out.println(num);
 	}
 	
 }

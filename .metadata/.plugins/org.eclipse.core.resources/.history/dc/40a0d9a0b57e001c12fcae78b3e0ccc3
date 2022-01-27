@@ -10,8 +10,7 @@ public class Calculator {
 		System.out.println("Summan av talen är " + (nbr1 + nbr2));
 		System.out.println("Skilnaden mellan talen är " + Math.abs(nbr1-nbr2));
 		System.out.println("Produkten av talen är " + (nbr1 * nbr2));
-		System.out.println("Kvoten mellan talen är " + (nbr1/nbr2) + "\n");
-		
+		System.out.println("Kvoten mellan talen är " + (nbr1/nbr2));
 	}
 	
 }
