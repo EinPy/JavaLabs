@@ -1,0 +1,28 @@
+import se.lth.cs.pt.window.SimpleWindow;
+import se.lth.cs.pt.square.Square;
+
+public class ContiniousSquares {
+
+	public static void main(String[] args) {
+		SimpleWindow w = new SimpleWindow(600, 600, "DrawSquare");
+		int x = 250, y = 250, side = 100;
+		Square sq = new Square(x, y, side);
+		sq.draw(w);
+		boolean running = true;
+		while (running) {
+			w.waitForMouseClick();
+			int newX = w.getClickedX(), newY = w.getClickedY();
+			int dx = newX - x;
+			int dy = newY - y;
+			int stepX = dx/10, stepY = dy/10;
+			for (int i = 0; i <= 10; i++) {
+				sq.move(stepX, stepY);
+				sq.draw(w);
+			}
+			x = newX;
+			y = newY;
+		}
+
+	}
+
+}

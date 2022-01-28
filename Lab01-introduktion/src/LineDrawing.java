@@ -11,27 +11,27 @@ public class LineDrawing {
 			// vänta tills användaren klickar på en musknapp
 			// rita en linje till den punkt där användaren klickade
 			w.waitForEvent();
-			int t = w.getEventType(); //mouseclick is associated with 1
+			int t = w.getEventType(); // mouseclick is associated with 1
 			if (t == 1) {
 				int x = w.getClickedX(), y = w.getClickedY();
-				if (clicks % 2 == 0) {
+				if (clicks == 0) {
 					w.moveTo(x, y);
-				}else{
+				} else {
 					w.lineTo(x, y);
 				}
 				clicks++;
-			}else if (t == 2) {
-				String press =  Character.toString(w.getKey());
+			} else if (t == 2) {
+				String press = Character.toString(w.getKey());
 				String word = "";
 				System.out.println(press);
-				while (!press.equals("\n")){//writes after enter is pressed
+				while (!press.equals("\n")) {// writes after enter is pressed
 					word += press;
 					w.waitForEvent();
 					press = Character.toString(w.getKey());
-					System.out.println(word + " press:" + press); //console output
+					System.out.println(word + " press:" + press); // debug output
 				}
 				System.out.println("no longer writing");
-				w.writeText(word); //havent solved issue of writing words on top of each others
+				w.writeText(word); // havent solved issue of writing words on top of each others
 			}
 		}
 	}
