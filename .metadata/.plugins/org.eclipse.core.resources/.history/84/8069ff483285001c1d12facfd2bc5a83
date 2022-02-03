@@ -1,0 +1,16 @@
+import java.util.ArrayList;
+
+public class Deck {
+	
+	private ArrayList<Cards> cards;
+	
+	//konstruktor
+	public Deck() {
+		this.cards = new ArrayList<Card>();
+	}
+	
+	public void createDeck() {
+		//genererar kort
+		for (Suit cardsuit : Suit.values)
+	}
+}

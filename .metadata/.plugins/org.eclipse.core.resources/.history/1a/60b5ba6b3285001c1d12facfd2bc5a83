@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+
+public class Deck {
+	
+	private ArrayList<Card> cards;
+	
+	//konstruktor
+	public Deck() {
+		this.cards = new ArrayList<Card>();
+	}
+	
+	public void createDeck() {
+		//genererar kort
+		for (Suit cardsuit : Suit.values()) {
+			for (Value val : Value.values()) {
+				//legg til 1 og 1 av 52 kort
+				this.cards.add(new Card(cardsuit, val));
+			}
+		}
+	}
+	
+	public String toString() {
+		String out = "";
+		for (Card c : this.cards) {
+			out += c.toString() + "\n";
+		}
+		return out;
+	}
+}
