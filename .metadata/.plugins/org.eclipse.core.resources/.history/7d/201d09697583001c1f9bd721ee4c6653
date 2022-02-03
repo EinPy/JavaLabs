@@ -1,0 +1,14 @@
+import se.lth.cs.pt.window.SimpleWindow;
+public class Mole {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Keep on digging! ");
+		Graphics g = new Graphics(50, 50, 10);
+		g.square();
+		g.block(10,10, Colors.SOIL);
+		g.rectangle(5,10,1, 1, Colors.TUNNEL);
+
+	}
+
+}

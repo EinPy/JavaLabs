@@ -11,5 +11,21 @@ public class DrawThreeSquares {
 		sq.draw(w);
 		sq.move(side / 4, side / 4);
 		sq.draw(w);
+		System.out.println(daysPerMonth(5));
+	}
+	public static int daysPerMonth(int monthNbr){
+	    switch(monthNbr){
+	        case 2:
+	            return 28;
+	        case 4:
+	        case 6:
+	        case 9:
+	        case 11:
+	            return 30;
+	        default:
+	            return 31; 
+	        
+	    }
 	}
 }
+
