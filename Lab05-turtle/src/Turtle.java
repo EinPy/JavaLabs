@@ -32,7 +32,7 @@ public class Turtle {
 	public void forward(int n) {
 		w.moveTo((int) Math.round(x), (int) Math.round(y));
 		double newX = x + (n*Math.cos(Math.toRadians(deg)));
-		double newY = y - (n*Math.sin(Math.toRadians(deg))); // This negative sign messed with me for a long time
+		double newY = y	 - (n*Math.sin(Math.toRadians(deg))); // This negative sign messed with me for a long time
 		int nX = (int) Math.round(newX);
 		int nY = (int) Math.round(newY);
 		if (pDown) {
@@ -50,8 +50,8 @@ public class Turtle {
 			}
 			w.lineTo(nX,nY);
 		}
-		x = nX;
-		y = nY;
+		x = newX;
+		y = newY;
 	}
 
 	/** Vrider beta grader åt vänster runt pennan. */

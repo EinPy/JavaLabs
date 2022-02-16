@@ -35,10 +35,16 @@ public class Blackjack {
         	playerDeck.draw(currentDeck);
         	
         	while(true) {
-        		System.out.println("Your hand:");
-        		System.out.print(playerDeck.toString());
-        		System.out.println("Your deck is valued at: " + playerDeck.cardsValue());
-        		System.out.println("Do you wish to hit or start over?\n Hit(1), New Hand(2)");
+        		boolean winner = false;
+        		System.out.println("Your hand:\n" + playerDeck.toString() +"Your deck is valued at: " + playerDeck.cardsValue());
+        		if (playerDeck.cardsValue() == 21) {
+        			System.out.println("BLACKJACK YOU WIN YOU FUCKING BEAST!");
+        			winner = true;
+        			
+        		}else {
+        			System.out.println("Do you wish to hit or start over?\n Hit(1), New Hand(2)");
+        		}
+        		System.out.println("Do you want to play again(2)");
         		int input = sc.nextInt();
         		if (input == 1) {
         			playerDeck.draw(currentDeck);
@@ -49,7 +55,11 @@ public class Blackjack {
         				break;
         			}
         		}else {
-        			System.out.println("fegis, your hand was valued at: "+ + playerDeck.cardsValue() +" \n\n");
+        			if (winner) {
+        				playerDeck.clear();
+        			}else {
+        				System.out.println("fegis, your hand was valued at: "+ + playerDeck.cardsValue() +" \n\n");
+        			}
         			playerDeck.clear();
         			break;
         		}
