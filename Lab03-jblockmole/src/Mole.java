@@ -3,7 +3,7 @@ public class Mole {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Mole m = new Mole();
+		var m = new Mole();
 		m.drawWorld();
 		m.dig();
 	}
@@ -19,6 +19,7 @@ public class Mole {
 		while (true) {
 			g.block(x, y, Colors.MOLE);
 			char key = g.waitForKey();
+			
 			g.block(x, y, Colors.TUNNEL);
 			if (key == 'w') {
 				y -= 1;

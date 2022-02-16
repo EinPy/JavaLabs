@@ -5,7 +5,7 @@ public class Graphics {
 	private int height;
 	private int blockSize;
 
-	private SimpleWindow w;;
+	private SimpleWindow w;
 
 	public Graphics(int w, int h, int bs) {
 		this.width = w;

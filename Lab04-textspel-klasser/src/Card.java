@@ -9,10 +9,10 @@ public class Card {
 	}
 
 	public String toString() {
-		return this.suit.toString() + "-" + this.value.toString();
+		return suit.toString() + "-" + value.toString();
 	}
 
 	public Value getValue() {
-		return this.value;
+		return value;
 	}
 }
