@@ -64,6 +64,7 @@ public class UserTable {
 
 		// 3. stoppa in den nya boken i luckan
 		users[pos] = u;
+		n++;
 	}
 
 	/**
@@ -79,7 +80,7 @@ public class UserTable {
 		int low = 0;
 		int high = n - 1;
 		int mid = -1;
-		while (low < high) {
+		while (low <= high) {
 			mid = (low + high) / 2;
 			if (users[mid].getCardNbr() == cardNbr) {
 				return users[mid];
@@ -121,11 +122,8 @@ public class UserTable {
 		for (int i = 0; i < n; i++) {
 			if (users[i].getName().equals(name)) {
 				return users[i];
-			} else {
-				return null;
 			}
 		}
-		
 		return null;
 	}
 	
