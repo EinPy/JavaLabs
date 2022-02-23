@@ -29,7 +29,7 @@ public class MazeWalker {
 				t.left(180);
 				t.forward(1);
 			}
-//			SimpleWindow.delay(0);
+			SimpleWindow.delay(1);
 		}
 		System.out.println("REACHED GOAL");
 	}
