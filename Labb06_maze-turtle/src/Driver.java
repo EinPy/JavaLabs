@@ -14,7 +14,7 @@ public class Driver {
 		MazeWalker walker = new MazeWalker(t);
 		maze.draw(w);
 		walker.walk(maze);
-		
+
 	}
 
 }
