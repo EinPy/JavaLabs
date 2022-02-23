@@ -12,6 +12,7 @@ public class Driver {
 		Turtle t = new Turtle(w, 300, 300);
 		Maze maze = new Maze(mazeNum);
 		MazeWalker walker = new MazeWalker(t);
+		maze.draw(w);
 		walker.walk(maze);
 		
 	}
