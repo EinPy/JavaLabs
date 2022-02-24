@@ -17,17 +17,31 @@ public class MemoryGame {
 		boolean playing = true;
 		
 		int moves = 0;
+		int r1 = 0, r2 = 0, c1 = 0, c2 = 0;
 		while(playing) {
-			window.waitForMouseClick();
-			int r1 = window.getMouseRow();
-			int c1 = window.getMouseCol();
-			board.turnCard(r1,c1);
-			window.drawCard(r1,c1);
-			window.waitForMouseClick();
-			int r2 = window.getMouseRow();
-			int c2 = window.getMouseCol();
-			board.turnCard(r2,c2);
-			window.drawCard(r2,c2);
+			boolean found = false;
+			while (! found) {
+				window.waitForMouseClick();
+				r1 = window.getMouseRow();
+				c1 = window.getMouseCol();
+				if (! board.frontUp(r1,c1)) {
+					board.turnCard(r1,c1);
+					window.drawCard(r1,c1);
+					found = true;
+				}
+			}
+			found = false;
+			while (! found) {
+				window.waitForMouseClick();
+				r2 = window.getMouseRow();
+				c2 = window.getMouseCol();
+				if (! board.frontUp(r2,c2)) {
+					board.turnCard(r2,c2);
+					window.drawCard(r2,c2);
+					found = true;
+				}
+			}
+			
 			moves ++;
 			if (board.same(r1, c1, r2, c2)) {
 				if (board.hasWon()) {
@@ -43,4 +57,21 @@ public class MemoryGame {
 		
 		
 	}
+	/*
+	private int[] newCard(MemoryWindow window, MemoryBoard board) {
+		int r = 0, c = 0;
+		boolean found = false;
+		while (! found) {
+			window.waitForMouseClick();
+			r = window.getMouseRow();
+			c = window.getMouseCol();
+			if (! board.frontUp(r,c)) {
+				board.turnCard(r,c);
+				window.drawCard(r,c);
+				found = true;
+			}
+		}
+		return {r, c};
+	}
+	*/
 }
