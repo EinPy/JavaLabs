@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class BankApplication {
-	static Scanner scan = new Scanner(System.in);
+	private static Scanner scan = new Scanner(System.in);
 	private static Bank bank = new Bank();
 
 	public static void main(String[] args) {
@@ -65,6 +65,7 @@ public class BankApplication {
 		case 6:
 			System.out.print("Namn: ");
 			String name = scan.nextLine();
+			System.out.print("\nId: ");
 			int id = scan.nextInt();
 			System.out.print("Konto skapad: ");
 			System.out.println(bank.addAccount(name, id));
