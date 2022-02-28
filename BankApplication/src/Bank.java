@@ -19,7 +19,7 @@ public class Bank {
 		}
 		BankAccount newAcc = new BankAccount (holderName, idNr);
 		accounts.add(newAcc);
-		return newAcc.getAccountNumber();
+		return newAcc.getAccountNumber() + '\n';
 	}
 //	
 //	public Customer findHolder(long idNr) {

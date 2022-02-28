@@ -9,45 +9,43 @@ public class BankApplication {
 		
 		while (running) {
 			menue();
-			boolean validInput = scan.hasNextInt();
+			boolean takingInput = true;
 			int option;
-			if (!validInput) {
-				while (!validInput) {
-					System.out.println("Please enter a whole number between 1 and 8");
-					String nextIn = scan.nextLine();
-					try {
-						option = Integer.parseInt(nextIn);
-						if (option >= 1 && option <= 8) {
-							validInput = true;
-							inputHandler(option);
-						}else {
-							validInput = false;
-						}
-					} catch (NumberFormatException nfe) {
-						validInput = false;
+			String in = scan.nextLine();
+			while (takingInput) {
+				try {
+					option = Integer.parseInt(in);
+					if (option >= 1 && option <= 8) {
+						inputHandler(option);
+						takingInput = false;
+						break;
+					}else {
+						in = errorMessage();
 					}
-				}	
-			}else {
-				option = scan.nextInt();
-				inputHandler(option);	
+				} catch (NumberFormatException nfe){
+					in = errorMessage();
+				}
+				
 			}
-			
-			
-
 		}
 	}
 	
 	private static void menue() {
-		System.out.println(
-			"1. Hitta konto utifrÃ¥n innehavare\r\n"
-			+ "2. SÃ¶k kontoinnehavare utifrÃ¥n (del av) namn\r\n"
-			+ "3. SÃ¤tt in\r\n"
+		System.out.print(
+			"1. Hitta konto utifrån innehavare\r\n"
+			+ "2. Sök kontoinnehavare utifrån (del av) namn\r\n"
+			+ "3. Sätt in\r\n"
 			+ "4. Ta ut\r\n"
-			+ "5. Ã–verfÃ¶ring\r\n"
+			+ "5. Överföring\r\n"
 			+ "6. Skapa konto\r\n"
 			+ "7. Ta bort konto\r\n"
 			+ "8. Skriv ut konton\r\n"
 			+ "9. Avsluta\r\n");
+	}
+	
+	private static String errorMessage() {
+		System.out.println("Please enter a whole number between 1 and 8");
+		return scan.nextLine();
 	}
 	
 	private static void inputHandler(int option) {
@@ -66,7 +64,8 @@ public class BankApplication {
 			System.out.print("Namn: ");
 			String name = scan.nextLine();
 			System.out.print("\nId: ");
-			int id = scan.nextInt();
+			String idS = scan.nextLine();
+			long id = Long.parseLong(idS);
 			System.out.print("Konto skapad: ");
 			System.out.println(bank.addAccount(name, id));
 			break;
@@ -75,6 +74,7 @@ public class BankApplication {
 		case 8:
 			break;
 		}
+		System.out.println("--------------------------------");
 	}
 	
 }
