@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BankApplication {
@@ -51,10 +52,29 @@ public class BankApplication {
 	private static void inputHandler(int option) {
 		switch (option) {
 		case 1:
+			System.out.print("Id: ");
+			String idNum = scan.nextLine();
+			long idSearch = Long.parseLong(idNum);
+			ArrayList<BankAccount> portefolio = bank.findAccountsForHolder(idSearch);
+			for (BankAccount acc : portefolio) {
+				System.out.println(acc);
+			}
 			break;
 		case 2:
+			System.out.print("Part of name: ");
+			String namePart = scan.nextLine();
+			ArrayList<Customer> customers = bank.findByPartofName(namePart);
+			for(Customer cust : customers) {
+				System.out.println(cust);
+			}
 			break;
 		case 3:
+			System.out.print("Konto: ");
+			String toAdd = scan.nextLine();
+			System.out.print("Belopp: ");
+			String amountS = scan.nextLine();
+			long value = Long.parseLong(amountS);
+			
 			break;
 		case 4:
 			break;
@@ -72,6 +92,10 @@ public class BankApplication {
 		case 7:
 			break;
 		case 8:
+			ArrayList<BankAccount> accounts = bank.getAllAccounts();
+			for (BankAccount acc : accounts) {
+				System.out.println(acc);
+			}
 			break;
 		}
 		System.out.println("--------------------------------");

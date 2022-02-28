@@ -40,7 +40,9 @@ public class BankAccount {
 	}
 	
 	public String toString() {
-		return "Customer string";
+		return String.format("konto %d (%s): %.2f)",
+				accountNumber, owner.toString(), value);
 	}
+	
 	
 }

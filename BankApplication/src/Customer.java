@@ -24,9 +24,10 @@ public class Customer {
 		return customerNr;
 	}
 	
-	public String toStriing() {
-		return name;
+	public String toString() {
+		return String.format("%s, id %d, kundnr %d", name, idNr, customerNr);
 	}
+
 	
 	
 }

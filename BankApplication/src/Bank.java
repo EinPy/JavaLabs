@@ -13,12 +13,12 @@ public class Bank {
 			Customer holder = bc.getHolder();
 			if (holder.getIdNr() == idNr) {
 				BankAccount newAcc = new BankAccount (holder);
-				accounts.add(newAcc);
+				insertSorted(newAcc);
 				return newAcc.getAccountNumber();
 			}
 		}
 		BankAccount newAcc = new BankAccount (holderName, idNr);
-		accounts.add(newAcc);
+		insertSorted(newAcc);
 		return newAcc.getAccountNumber() + '\n';
 	}
 //	
@@ -30,20 +30,43 @@ public class Bank {
 //		
 //	}
 //	
-//	public ArrayList<BankAccount> getAllAccounts(){
-//		
-//	}
+	public ArrayList<BankAccount> getAllAccounts(){
+		return accounts;
+	}
 //	
 //	public BankAccound findByNumber(int accountNumber) {
 //		
 //	}
-//	
-//	public ArrayList<BankAccount> findAccountsForHolder(long idNr){
-//		
-//	}
-//	
-//	public ArrayList<Customer> findByPartofName(String namePart){
-//		
-//	}
+	
+	public ArrayList<BankAccount> findAccountsForHolder(long idNr){
+		ArrayList<BankAccount> portefolio = new ArrayList<BankAccount>();
+		for (BankAccount acc : accounts) {
+			if (acc.getHolder().getIdNr() == idNr) {
+				portefolio.add(acc);
+			}
+		}
+		return portefolio;
+	}
+	
+	public ArrayList<Customer> findByPartofName(String namePart){
+		ArrayList<Customer> customers = new ArrayList<Customer>();
+		for (BankAccount acc : accounts) {
+			if (acc.getHolder().getName().contains(namePart)) {
+				customers.add(acc.getHolder());
+			}
+		}
+		return customers;
+	}
+	
+	private void insertSorted(BankAccount bankAcc) {
+		int pos = 0;
+		//ugly
+		if (accounts.size()>0) {
+			while(pos < accounts.size() && accounts.get(pos).getHolder().getName().compareTo(bankAcc.getHolder().getName()) < 0) {
+				pos++;
+			}
+		}
+		accounts.add(pos,bankAcc);
+	}
 
 }
