@@ -19,7 +19,7 @@ public class Bank {
 		}
 		BankAccount newAcc = new BankAccount (holderName, idNr);
 		insertSorted(newAcc);
-		return newAcc.getAccountNumber() + '\n';
+		return newAcc.getAccountNumber();
 	}
 //	
 //	public Customer findHolder(long idNr) {
@@ -33,10 +33,16 @@ public class Bank {
 	public ArrayList<BankAccount> getAllAccounts(){
 		return accounts;
 	}
-//	
-//	public BankAccound findByNumber(int accountNumber) {
-//		
-//	}
+	
+	public BankAccount findByNumber(int accountNumber) {
+		for (BankAccount acc : accounts) {
+			if (acc.getAccountNumber() == accountNumber) {
+				return acc;
+			}
+		}
+		return null;
+		
+	}
 	
 	public ArrayList<BankAccount> findAccountsForHolder(long idNr){
 		ArrayList<BankAccount> portefolio = new ArrayList<BankAccount>();

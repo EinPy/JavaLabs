@@ -33,11 +33,11 @@ public class BankApplication {
 	
 	private static void menue() {
 		System.out.print(
-			"1. Hitta konto utifrån innehavare\r\n"
-			+ "2. Sök kontoinnehavare utifrån (del av) namn\r\n"
-			+ "3. Sätt in\r\n"
+			"1. Hitta konto utifrï¿½n innehavare\r\n"
+			+ "2. Sï¿½k kontoinnehavare utifrï¿½n (del av) namn\r\n"
+			+ "3. Sï¿½tt in\r\n"
 			+ "4. Ta ut\r\n"
-			+ "5. Överföring\r\n"
+			+ "5. ï¿½verfï¿½ring\r\n"
 			+ "6. Skapa konto\r\n"
 			+ "7. Ta bort konto\r\n"
 			+ "8. Skriv ut konton\r\n"
@@ -60,6 +60,7 @@ public class BankApplication {
 				System.out.println(acc);
 			}
 			break;
+			
 		case 2:
 			System.out.print("Part of name: ");
 			String namePart = scan.nextLine();
@@ -68,18 +69,71 @@ public class BankApplication {
 				System.out.println(cust);
 			}
 			break;
+			
 		case 3:
 			System.out.print("Konto: ");
 			String toAdd = scan.nextLine();
+			int accNum = Integer.parseInt(toAdd);
 			System.out.print("Belopp: ");
 			String amountS = scan.nextLine();
-			long value = Long.parseLong(amountS);
+			double value = Double.parseDouble(amountS);
+			BankAccount acc = bank.findByNumber(accNum);
+			if (acc == null) {
+				System.out.println("Not a valid account number");
+			}else {
+				acc.deposit(value);
+				System.out.println(acc);
+			}
 			
 			break;
+			
 		case 4:
+			System.out.print("FrÃ¥n konto: ");
+			String from = scan.nextLine();
+			int fromA = Integer.parseInt(from);
+			System.out.print("Belopp: ");
+			String val = scan.nextLine();
+			double money = Double.parseDouble(val);
+			BankAccount frm = bank.findByNumber(fromA);
+			
+			if (frm == null) {
+				System.out.println("Not a valid account number");
+			} else if (money < frm.getAmount()) {
+				frm.withdraw(money);
+				System.out.println("Velyckad transaktion, uppdaterad saldo: ");
+				System.out.println(frm);
+			} else {
+				System.out.printf("uttaget misslyckades, endast %.2f pÃ¥ kontot!\n", frm.getAmount());
+			}
 			break;
+			
 		case 5:
+			System.out.print("FrÃ¥n konto: ");
+			String from1 = scan.nextLine();
+			int fromA1 = Integer.parseInt(from1);
+			System.out.print("Til konto: ");
+			String to = scan.nextLine();
+			int toI = Integer.parseInt(to);
+			System.out.print("Belopp: ");
+			String v = scan.nextLine();
+			double amount = Double.parseDouble(v);
+			
+			BankAccount fr = bank.findByNumber(fromA1);
+			BankAccount reciever = bank.findByNumber(toI);
+			
+			if (fr == null || reciever == null) {
+				System.out.println("Not a valid account number");
+			} else if (amount < fr.getAmount()) {
+				fr.withdraw(amount);
+				reciever.deposit(amount);
+				System.out.println("Velyckad transaktion, uppdaterade kontodetaljer: ");
+				System.out.println(fr);
+				System.out.println(reciever);
+			}else {
+				System.out.printf("uttaget misslyckades, endast %.2f pÃ¥ kontot!\n", fr.getAmount());
+			}
 			break;
+			
 		case 6:
 			System.out.print("Namn: ");
 			String name = scan.nextLine();
@@ -89,13 +143,17 @@ public class BankApplication {
 			System.out.print("Konto skapad: ");
 			System.out.println(bank.addAccount(name, id));
 			break;
+			
 		case 7:
 			break;
+			
 		case 8:
 			ArrayList<BankAccount> accounts = bank.getAllAccounts();
-			for (BankAccount acc : accounts) {
-				System.out.println(acc);
+			for (BankAccount a : accounts) {
+				System.out.println(a);
 			}
+			break;
+		case 9:
 			break;
 		}
 		System.out.println("--------------------------------");
