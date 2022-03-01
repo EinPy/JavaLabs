@@ -13,7 +13,7 @@ public class Bank {
 	public int addAccount(String holderName, long idNr) {
 		for (BankAccount bc : accounts) {
 			Customer holder = bc.getHolder();
-			if (holder.getIdNr() == idNr) {
+			if (holder.getIdNr() == idNr && holder.getName() == holderName) {
 				BankAccount newAcc = new BankAccount (holder);
 				insertSorted(newAcc);
 				return newAcc.getAccountNumber();

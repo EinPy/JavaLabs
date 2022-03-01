@@ -15,7 +15,7 @@ public class DizzyTurtle extends RaceTurtle{
 	}
 	
 	public void raceStep(){
-		int turn = rand.nextInt(5) - 2;
+		int turn = (rand.nextInt(5) - 2) * drunk;
 		left(turn);
 		super.raceStep();
 	}

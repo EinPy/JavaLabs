@@ -33,11 +33,11 @@ public class BankApplication {
 	
 	private static void menue() {
 		System.out.print(
-			"1. Hitta konto utifrï¿½n innehavare\r\n"
-			+ "2. Sï¿½k kontoinnehavare utifrï¿½n (del av) namn\r\n"
-			+ "3. Sï¿½tt in\r\n"
+			"1. Hitta konto utifrrån innehavare\r\n"
+			+ "2. Sök kontoinnehavare utifrånn (del av) namn\r\n"
+			+ "3. Sätt in\r\n"
 			+ "4. Ta ut\r\n"
-			+ "5. ï¿½verfï¿½ring\r\n"
+			+ "5. Överföring\r\n"
 			+ "6. Skapa konto\r\n"
 			+ "7. Ta bort konto\r\n"
 			+ "8. Skriv ut konton\r\n"
@@ -52,7 +52,7 @@ public class BankApplication {
 	
 	private static void inputHandler(int option) {
 		switch (option) {
-		case 1:
+		case 1:{
 			System.out.print("Id: ");
 			String idNum = scan.nextLine();
 			long idSearch = Long.parseLong(idNum);
@@ -61,7 +61,7 @@ public class BankApplication {
 				System.out.println(acc);
 			}
 			break;
-			
+		}
 		case 2:
 			System.out.print("Part of name: ");
 			String namePart = scan.nextLine();
@@ -112,7 +112,7 @@ public class BankApplication {
 				System.out.println("Velyckad transaktion, uppdaterad saldo: ");
 				System.out.println(frm);
 			} else {
-				System.out.printf("uttaget misslyckades, endast %.2f pÃ¥ kontot!\n", frm.getAmount());
+				System.out.printf("uttaget misslyckades, endast %.2f på kontot!\n", frm.getAmount());
 			}
 			break;
 			
@@ -165,12 +165,13 @@ public class BankApplication {
 			}
 			break;
 			
-		case 8:
-			ArrayList<BankAccount> accounts = bank.getAllAccounts();
-			for (BankAccount a : accounts) {
+		case 8:{
+			ArrayList<BankAccount> portefolio = bank.getAllAccounts();
+			for (BankAccount a : portefolio) {
 				System.out.println(a);
 			}
 			break;
+		}
 		case 9:
 			System.exit(0);
 			break;

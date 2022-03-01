@@ -38,6 +38,7 @@ public class TurtleRace2 {
 				} else {
 					order.add(turds.get(i));
 					turds.remove(i);
+					i--;
 				}
 			}
 			RaceWindow.delay(10);

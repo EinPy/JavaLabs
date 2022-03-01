@@ -19,6 +19,7 @@ public class TurtleRace {
 				}else {
 					order.add(turds.get(i));
 					turds.remove(i);
+					i--;
 				}
 			}
 			RaceWindow.delay(10);
@@ -28,7 +29,7 @@ public class TurtleRace {
 	
 	private static void scores(ArrayList<RaceTurtle> order) {
 		for (int p = 0; p <= 2; p++) {
-			System.out.printf("PÃ¥ plats %d: ", p+1);
+			System.out.printf("På plats %d: ", p+1);
 			System.out.println(order.get(p));
 		}
 	}
