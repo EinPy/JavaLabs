@@ -16,7 +16,7 @@ public class BankApplication {
 			while (takingInput) {
 				try {
 					option = Integer.parseInt(in);
-					if (option >= 1 && option <= 8) {
+					if (option >= 1 && option <= 9) {
 						inputHandler(option);
 						takingInput = false;
 						break;
@@ -41,7 +41,8 @@ public class BankApplication {
 			+ "6. Skapa konto\r\n"
 			+ "7. Ta bort konto\r\n"
 			+ "8. Skriv ut konton\r\n"
-			+ "9. Avsluta\r\n");
+			+ "9. Avsluta\r\n"
+			+ "val: ");
 	}
 	
 	private static String errorMessage() {
@@ -65,6 +66,9 @@ public class BankApplication {
 			System.out.print("Part of name: ");
 			String namePart = scan.nextLine();
 			ArrayList<Customer> customers = bank.findByPartofName(namePart);
+			if (customers.size() == 0) {
+				System.out.println("No customers found");
+			}
 			for(Customer cust : customers) {
 				System.out.println(cust);
 			}
@@ -81,8 +85,13 @@ public class BankApplication {
 			if (acc == null) {
 				System.out.println("Not a valid account number");
 			}else {
-				acc.deposit(value);
-				System.out.println(acc);
+				if (value >= 0) {
+					acc.deposit(value);
+					System.out.println(acc);
+				}else {
+					System.out.println("cannot insert negative money");
+				}
+				
 			}
 			
 			break;
@@ -137,7 +146,7 @@ public class BankApplication {
 		case 6:
 			System.out.print("Namn: ");
 			String name = scan.nextLine();
-			System.out.print("\nId: ");
+			System.out.print("Id: ");
 			String idS = scan.nextLine();
 			long id = Long.parseLong(idS);
 			System.out.print("Konto skapad: ");
@@ -145,6 +154,15 @@ public class BankApplication {
 			break;
 			
 		case 7:
+			System.out.print("Konto: ");
+			String konto  = scan.nextLine();
+			int k = Integer.parseInt(konto);
+			boolean removed = bank.removeAccount(k);
+			if(removed) {
+				System.out.println("konto tatt bort");
+			}else {
+				System.out.println("hittade inte et konto med det kontonumret");
+			}
 			break;
 			
 		case 8:
@@ -154,6 +172,7 @@ public class BankApplication {
 			}
 			break;
 		case 9:
+			System.exit(0);
 			break;
 		}
 		System.out.println("--------------------------------");
